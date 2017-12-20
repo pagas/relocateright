@@ -89,14 +89,14 @@
                 <div class="widget">
                     <h4>Administrator</h4>
                     <ul class="link-list">
-                        <li>
                             <?php if (!Authorization::hasAdminAccess()): ?>
-                                <a id="login-button" href="#">Login</a>
+                                <li><a id="login-button" href="#">Login</a></li>
                             <?php endif; ?>
                             <?php if (Authorization::hasAdminAccess()): ?>
-                                <a href="admin/logout">Logout</a>
+                                <li><a href="admin/logout">Logout</a></li>
+                                <li><a id="register-user-button" href="#">Create user</a></li>
                             <?php endif; ?>
-                        </li>
+
                     </ul>
                 </div>
 

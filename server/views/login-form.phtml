@@ -9,7 +9,7 @@
             <div class="container">
                 <h3>Login</h3>
 
-                <div class="container error-container">
+                <div class="error-container text-danger">
                 </div>
 
                 <label><b>Username</b></label>
@@ -19,19 +19,35 @@
                 <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button type="submit">Login</button>
-                <a class="singup" href="user/singupform">Sing Up</a>
+
             </div>
         </form>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
 
 
-        <form id="register-form" class="" style="display:none">
+
+<!-- The Modal -->
+<div id="user-register-modal" class="modal">
+  <span class="close" title="Close Modal">&times;
+  </span>
+
+    <!-- Modal Content -->
+    <div class="modal-content animate">
+
+        <form id="register-form" class="">
             <div class="container">
                 <h3>Register</h3>
                 <div class="container error-container">
                 </div>
 
                 <label><b>First name</b></label>
-                <input type="text" placeholder="First name" name="firstname" >
+                <input type="text" placeholder="First name" name="firstname" required>
                 <div class="error"></div>
 
                 <label><b>Last name</b></label>
@@ -51,7 +67,6 @@
                 <div class="error"></div>
 
                 <button type="submit">Register</button>
-                <a href="#" class="back-to-login-page">Back login page</a>
             </div>
         </form>
 

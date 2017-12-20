@@ -3,8 +3,9 @@ var REApp = window.REApp || {};
 REApp.loginDialog = (function(REApp) {
     // Get the modal
     var loginModal = $('#login-modal');
+    var userRegisterModal = $('#user-register-modal');
     var loginForm = loginModal.find('#login-form');
-    var registerForm = loginModal.find('#register-form');
+    var registerForm = userRegisterModal.find('#register-form');
     var errorContainer = loginForm.find('.error-container');
 
     // When the user clicks anywhere outside of the modal, close it
@@ -12,11 +13,6 @@ REApp.loginDialog = (function(REApp) {
         if (event.target == loginModal) {
             loginModal.hide();
         }
-    }
-
-    function showDialog() {
-        loginModal.css('display', 'block');
-        showLoginModal();
     }
 
     loginForm.submit(function(event) {
@@ -28,7 +24,7 @@ REApp.loginDialog = (function(REApp) {
                 window.location.href = '/';
             } else {
                 // find appropriate fields on the form and show errors below the input box
-                errorContainer.html('Error: Incorrect credentials');
+                errorContainer.html('** Incorrect credentials');
             }
         });
     });
@@ -40,7 +36,7 @@ REApp.loginDialog = (function(REApp) {
         $.post( "user/register",  formData).done(function( data ) {
             errorContainer.html('');
             if (data.success === true) {
-                showLoginModal();
+                window.location.href = '/';
             } else {
                 REApp.formUtilities.showFormFieldErrors(registerForm, data.errors);
             }
@@ -52,25 +48,24 @@ REApp.loginDialog = (function(REApp) {
         loginModal.hide();
     });
 
-    loginModal.find('.singup').click(function(event) {
+    userRegisterModal.find('button.cancelbtn, span.close').click(function(event) {
         event.preventDefault();
-        loginForm.hide();
-        registerForm.show();
-        REApp.formUtilities.clearFormField(registerForm);
+        userRegisterModal.hide();
     });
 
-    loginModal.find('.back-to-login-page').click(function(event) {
-        event.preventDefault();
-        showLoginModal();
-    })
 
-    function showLoginModal() {
-        registerForm.hide()
-        loginForm.show();
+    function showLoginDialog() {
         REApp.formUtilities.clearFormField(loginForm);
+        loginModal.show();
+    }
+
+    function showRegisterDialog() {
+        REApp.formUtilities.clearFormField(registerForm);
+        userRegisterModal.show();
     }
 
     return {
-        showDialog: showDialog
+        showLoginDialog: showLoginDialog,
+        showRegisterDialog:showRegisterDialog
     }
 })(REApp);
