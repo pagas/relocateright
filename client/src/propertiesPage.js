@@ -10,6 +10,8 @@ $(function() {
     showOneOfThePriceRanges(rentalPropertyField);
     var propertiesMap = $('#google-map').hide();
 
+    $("#sendmessage.fade-out").css({'display':'block'}).fadeOut(2000);
+
     searchForm.submit(function(event) {
         // stop browser default behaviour - refreshing the page
         event.preventDefault();

@@ -21,6 +21,10 @@
 <?php endif; ?>
 
 <form class="container" id="searchForm" name="searchForm">
+    <?php if(!empty($_GET['message'])) : ?>
+        <div id="sendmessage" class="fade-out"><?=$_GET['message']?></div>
+    <?php endif; ?>
+
     <div class="row">
 
         <div class="col-md-2 mb-2">

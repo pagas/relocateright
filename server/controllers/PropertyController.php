@@ -88,6 +88,7 @@ class PropertyController extends Controller
 
         $this->params['property'] = array(
             'title' => '',
+            'rentalProperty' => 0,
             'description' => '',
             'price' => '',
             'postcode' => ''
@@ -114,6 +115,6 @@ class PropertyController extends Controller
         $propertyManager = new PropertyManager();
         $propertyManager->delete($request['actionParams'][0]);
 
-        $this->redirect("property?message='Property successfully deleted.'");
+        $this->redirect("property?message=Property successfully deleted.");
     }
 }
