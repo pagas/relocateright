@@ -41,8 +41,9 @@
             <p>
                 <?= $property['description']; ?>
             </p>
-
+            <?php if (Authorization::hasAdminAccess()) : ?>
             <button class="btn btn-primary" data-property-id="<?=$property['id'];?>" id="edit-property-button">Edit</button>
+            <?php endif; ?>
 
         </div>
         <div class="col-sm-6">
