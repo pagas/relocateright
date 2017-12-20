@@ -3,6 +3,9 @@
 .modal form {
     border: 3px solid #f1f1f1;
 }
+.modal .container {
+    width: 85%;
+}
 
 /* Full-width inputs */
 .modal input[type=text], .modal input[type=password], .modal input[type=email] {
