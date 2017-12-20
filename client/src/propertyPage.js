@@ -66,6 +66,9 @@ REApp.propertyPage = (function(REApp) {
             REApp.formUtilities.showFormFieldErrors(propertyForm, data.errors);
         }
     }
+    $('#edit-property-button').click(function() {
+        window.location.href = 'property/edit/' + $(this).data('propertyId');
+    })
 
     var map = $('#map');
     if (map.length > 0) {

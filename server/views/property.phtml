@@ -1,50 +1,53 @@
 <article>
-    <div class="post-image">
-        <div class="post-heading">
-            <h3><a><?=$property['title'];?>t</a></h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="post-image">
+                <div class="post-heading">
+                    <h3><a><?= $property['title']; ?>t</a></h3>
+                </div>
+                <img src="client/assets/img/1.jpg" alt="" class="img-responsive">
+            </div>
+
+            <div>
+                <label>Property Type:</label>
+                <?= PropertyManager::getDropDownValueLabel('propertyType', $property['propertyType']); ?>
+            </div>
+
+            <div>
+                <label>Status:</label>
+                <?= PropertyManager::getDropDownValueLabel('status', $property['status']); ?>
+            </div>
+
+            <div>
+                <label>Area:</label>
+                <?= PropertyManager::getDropDownValueLabel('areas', $property['area']); ?>
+            </div>
+
+            <div>
+                <label>Number of rooms:</label>
+                <?= PropertyManager::getDropDownValueLabel('noOfBedrooms', $property['noOfBedrooms']); ?>
+            </div>
+
+            <div>
+                <label>Price:</label>
+                <?= "(£)" . $property['price'] ?>
+            </div>
+            <div>
+                <label>Published:</label>
+                <?= $property['created_at'] ?>
+            </div>
+
+
+            <p>
+                <?= $property['description']; ?>
+            </p>
+
+            <button class="btn btn-primary" data-property-id="<?=$property['id'];?>" id="edit-property-button">Edit</button>
+
         </div>
-        <img  src="client/assets/img/1.jpg"  alt="" class="img-responsive">
+        <div class="col-sm-6">
+            <div id="map" data-lat="<?= $property['lat']; ?>" data-lng="<?= $property['lng']; ?>"></div>
+        </div>
     </div>
-
-    <div>
-        <label>Property Type:</label>
-        <?= PropertyManager::getDropDownValueLabel('propertyType', $property['propertyType']);?>
-    </div>
-
-    <div>
-        <label>Status:</label>
-        <?= PropertyManager::getDropDownValueLabel('status', $property['status']); ?>
-    </div>
-
-    <div>
-        <label>Area:</label>
-        <?= PropertyManager::getDropDownValueLabel('areas', $property['area']); ?>
-    </div>
-
-    <div>
-        <label>Number of rooms:</label>
-        <?= PropertyManager::getDropDownValueLabel('noOfBedrooms', $property['noOfBedrooms']); ?>
-    </div>
-
-    <div>
-        <label>Price:</label>
-        <?= "(£)" .  $property['price'] ?>
-    </div>
-
-    <p>
-        <?=$property['description'];?>
-    </p>
-    <div class="bottom-article">
-        <ul class="meta-post">
-            <li><i class="fa fa-calendar"></i><a ><?= $property['created_at'];?></a></li>
-            <?php if (Authorization::hasAdminAccess()) : ?>
-                <li>
-                    <a href="property/edit/<?= $property['id']; ?>">Edit</a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </div>
-
-    <div id="map" data-lat="<?= $property['lat'];?>" data-lng="<?= $property['lng'];?>"></div>
-
 </article>
+
