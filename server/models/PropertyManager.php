@@ -50,7 +50,7 @@ class PropertyManager extends BaseModel
             '5+' => '5 and over'
         ),
         'areas' => array(
-            "" => "Please select",
+            "" => "Any",
             "abbeywood" => "Abbey Wood",
             "greenwich" => "Greenwich",
             "kingscross" => "King's Cross",
