@@ -42,7 +42,8 @@
                 <?= $property['description']; ?>
             </p>
             <?php if (Authorization::hasAdminAccess()) : ?>
-            <button class="btn btn-primary" data-property-id="<?=$property['id'];?>" id="edit-property-button">Edit</button>
+                <a class="btn btn-primary" href="/property/edit/<?=$property['id'];?>">Edit</a>
+                <a class="btn btn-primary" href="/property/delete/<?=$property['id'];?>" >Delete</a>
             <?php endif; ?>
 
         </div>

@@ -20,11 +20,6 @@ class PropertyController extends Controller
 
     function index()
     {
-        // Creates a model instance which allows us to access properties
-        $propertyManager = new PropertyManager();
-
-        // $properties = $propertyManager->getProperties();
-        $this->params['properties'] = array();
         $this->params['dropDowns'] = PropertyManager::getAllDropDownLabels();
         $this->view = 'properties';
     }
@@ -113,5 +108,12 @@ class PropertyController extends Controller
         $this->respondJSON(array(
             'properties' => $properties
         ));
+    }
+
+    function delete($request) {
+        $propertyManager = new PropertyManager();
+        $propertyManager->delete($request['actionParams'][0]);
+
+        $this->redirect("property?message='Property successfully deleted.'");
     }
 }

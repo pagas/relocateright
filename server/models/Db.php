@@ -79,6 +79,15 @@ class Db {
         return $result->execute($params);
     }
 
+    public static function delete($table, $id)
+    {
+        $params['id'] = $id;
+        $query = "DELETE FROM $table WHERE id = :id";
+
+        $result = self::$connection->prepare($query);
+        return $result->execute($params);
+    }
+
     public static function generateWhereString($params) {
         return join(' AND ', array_map(function($key) {
             return $key . '= :' . $key;

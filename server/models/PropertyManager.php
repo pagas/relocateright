@@ -104,6 +104,10 @@ class PropertyManager extends BaseModel
         return Db::queryOne($this->table, array('id' => $id));
     }
 
+    public function delete($propertyId) {
+        return Db::delete($this->table, $propertyId);
+    }
+
     public function findProperties($searchParams)
     {
         if (!empty($searchParams['rentalProperty'])) {
