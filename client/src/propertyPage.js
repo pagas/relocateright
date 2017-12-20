@@ -56,7 +56,7 @@ REApp.propertyPage = (function(REApp) {
     function processSubmitResponse(data) {
         var propertyId = propertyForm.find("input[name='id'][type='hidden']").val();
         if (propertyId) {
-            window.location.href='/property/view/' + propertyId;
+            window.location.href='/property/view/' + propertyId + '?message=Property successfully updated.';
         }
 
         if (data.success === true) {
