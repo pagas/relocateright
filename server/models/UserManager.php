@@ -13,7 +13,7 @@ class UserManager extends BaseModel
         array('firstname, lastname, username, email, password', 'required'),
         array('email','email'),
         array('firstname, lastname, username, password', 'maxLength', 100),
-        array('username, email', 'unique'),
+        array('username, email', 'unique')
     );
     protected $fieldLabels = array(
         'firstname' => 'First name',
@@ -26,7 +26,7 @@ class UserManager extends BaseModel
     public function validate($user)
     {
         parent::validate($user);
-        if (isset($record['password']) && strlen($user['password']) < 6) {
+        if (isset($user['password']) && strlen($user['password']) < 6) {
             $this->addError('password', 'Password is too short.');
         }
 
