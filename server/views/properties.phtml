@@ -1,0 +1,119 @@
+<?php if (!Authorization::hasAdminAccess()): ?>
+<section class="callaction">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cta-text">
+                    <h2>Welcome to <span>Relocate Right</span> website.</h2>
+                    <p>
+                        We have been helping people to rent and buy properties in the London area
+                        for over ten years and would love to help you do the same.
+                        Let us know what are you looking for below and then browse the properties we have available.
+                        If you have a property to sell or rent click <a href="/selling">here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h1>Find the properties you like</h1>
+<?php endif; ?>
+
+<form class="container" id="searchForm" name="searchForm">
+    <div class="row">
+
+        <div class="col-md-2 mb-2">
+            <label for="sel1">Rent or Buy</label>
+            <select name="rentalProperty" class="form-control" id="rentalProperty" required>
+                <option value="buy">Buy</option>
+                <option value="rent">Rent</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <label >Area</label>
+            <select name="area" class="form-control">
+                <?php LayoutControl::showSelectControl($dropDowns['areas']) ?>
+            </select>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <label for="propertyType">Property Type</label>
+            <select name="propertyType" class="form-control" id="propertyType">
+                <option value="" selected>Any</option>
+                <option value="houses">Houses</option>
+                <option value="flats">Flats / Apartments</option>
+                <option value="bungalows">Bungalows</option>
+                <option value="commercial">Commercial Property</option>
+                <option value="other">Other</option>
+            </select>
+            <div class="error"></div>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <label >Price range (£)</label>
+            <select name="priceRange" id="buyPriceRange" class="form-control">
+                <option value="">Any</option>
+                <option value="0-50">Up to 50,000</option>
+                <option value="50-75">50,000-75,000</option>
+                <option value="75-100">75,000-100,000</option>
+                <option value="100-150">100,000-150,000</option>
+                <option value="150-200">150,000-200,000</option>
+                <option value="200-250">200,000-250,000</option>
+                <option value="250-300">250,000-300,000</option>
+                <option value="350-500">350,000-500,000</option>
+                <option value="500+">500,000 and over</option>
+            </select>
+
+            <select name="priceRange" id="rentPriceRange" class="form-control">
+                <option value="">Any</option>
+                <option value="0-50">Up to 50</option>
+                <option value="50-100">50-100</option>
+                <option value="100-150">100-150</option>
+                <option value="150-200">150-200</option>
+                <option value="200-300">200-300</option>
+                <option value="300-400">300-400</option>
+                <option value="400-500">400-500</option>
+                <option value="500-600">500-600</option>
+                <option value="600+">6000 and over</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <label >Min Bedroom no.</label>
+            <select name="minBedroomNo" class="form-control">
+                <option value="" selected>Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5+">5 and over</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <label >Order By.</label>
+            <select name="orderBy" class="form-control">
+                <option value="createdDesc">Most recent</option>
+                <option value="createdAsc">Oldest</option>
+                <option value="priceAsc">Price (low to high)</option>
+                <option value="priceDesc">Price (high to low)</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+
+<!--<div id="property-list-menu">-->
+<!--    <button class="btn btn-primary" id="show-list-button">List</button>-->
+<!--    <button class="btn btn-primary" id="show-map-button">Map</button>-->
+<!--</div>-->
+
+<div class="result"></div>
+<div style="clear:both;"></div>
+
+<section id="content">
+    <div id="google-map" ></div>
+</section>

@@ -1,0 +1,15 @@
+# Stop indexing directory content. This way, files won't be listed if a user types a directory path in his browser.
+Options -Indexes
+
+# Provides a rule-based rewriting engine to rewrite requested URLs on the fly
+RewriteEngine On
+# RewriteBase /
+
+# If the file or the folder specified does not exits procede to the rewrite rule.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Do the redirection only if it is not a specified file in the list
+RewriteRule !\.(css|js|icon|zip|rar|png|jpg|gif|pdf)$ index.php [L]
+
+# Treat the phtml files (template-based files) the same as php
+AddType application/x-httpd-php .php .phtml

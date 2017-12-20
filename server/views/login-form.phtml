@@ -1,0 +1,66 @@
+<!-- The Modal -->
+<div id="login-modal" class="modal">
+  <span class="close" title="Close Modal">&times;
+  </span>
+
+    <!-- Modal Content -->
+    <div class="modal-content animate">
+        <form id="login-form" class="">
+            <div class="container">
+                <h3>Login</h3>
+
+                <div class="container error-container">
+                </div>
+
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <button type="submit">Login</button>
+                <a class="singup" href="user/singupform">Sing Up</a>
+            </div>
+        </form>
+
+
+        <form id="register-form" class="" style="display:none">
+            <div class="container">
+                <h3>Register</h3>
+                <div class="container error-container">
+                </div>
+
+                <label><b>First name</b></label>
+                <input type="text" placeholder="First name" name="firstname" >
+                <div class="error"></div>
+
+                <label><b>Last name</b></label>
+                <input type="text" placeholder="Last name" name="lastname" required>
+                <div class="error"></div>
+
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <div class="error"></div>
+
+                <label><b>Email</b></label>
+                <input type="email" placeholder="Email" name="email" required>
+                <div class="error"></div>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <div class="error"></div>
+
+                <button type="submit">Register</button>
+                <a href="#" class="back-to-login-page">Back login page</a>
+            </div>
+        </form>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+
+</div>

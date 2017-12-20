@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/localhost"/>
+    <meta charset="UTF-8"/>
+    <title>Relocate Right</title>
+    <meta name="description" content="Real Estate Agency Web Site"/>
+    <link rel="stylesheet" href=" <?= Config::CLIENT_ASSET_PATH; ?>css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href=" <?= Config::CLIENT_ASSET_PATH; ?>css/default.css" type="text/css"/>
+    <link rel="stylesheet" href=" <?= Config::CLIENT_ASSET_PATH; ?>css/style.css" type="text/css"/>
+    <link rel="stylesheet" href=" <?= Config::CLIENT_ASSET_PATH; ?>css/modals.css" type="text/css"/>
+    <link rel="stylesheet" href=" <?= Config::CLIENT_ASSET_PATH; ?>css/uploadfile.css" type="text/css"/>
+    <link rel="stylesheet" href=" <?= Config::CLIENT_ASSET_PATH; ?>css/dropzone.css" type="text/css"/>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <header>
+<!--        navbar-static-top-->
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="<?= Config::CLIENT_ASSET_PATH?>img/logo_red.png" alt="">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <?php if (Authorization::hasAdminAccess()): ?>
+
+                            <li class="<?= LayoutControl::isRouteRootActive('selling') ?>">
+                                <a href="/property">Properties</a>
+                            </li>
+                            <li class="<?= LayoutControl::isRouteRootActive('contact') ?>">
+                                <a href="/property/create">Create Property</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="<?= LayoutControl::isRouteRootActive('') ?>">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="<?= LayoutControl::isRouteRootActive('selling') ?>">
+                                <a href="/selling">Selling</a>
+                            </li>
+                            <li class="<?= LayoutControl::isRouteRootActive('contact') ?>">
+                                <a href="/contact">Contact</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <?php $this->controller->renderView(); ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-lg-3">
+                <div class="widget">
+                    <h4>Get in touch with us</h4>
+                    <address>
+                        <strong>Northumbria University Inc</strong><br>
+                        Liverpool st., E0 321<br>
+                        Someplace 71745 Earth
+                    </address>
+                    <p>
+                        <i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
+                        <i class="icon-envelope-alt"></i> email@domainname.com
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                <div class="widget">
+                    <h4>Administrator</h4>
+                    <ul class="link-list">
+                        <li>
+                            <?php if (!Authorization::hasAdminAccess()): ?>
+                                <a id="login-button" href="#">Login</a>
+                            <?php endif; ?>
+                            <?php if (Authorization::hasAdminAccess()): ?>
+                                <a href="admin/logout">Logout</a>
+                            <?php endif; ?>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="copyright">
+                        <p>&copy; Paulius Gaidamavicius - All Right Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<?php include Config::SERVER_PATH . '/views/login-form.phtml'; ?>
+
+<script src="<?= Config::CLIENT_ASSET_PATH; ?>javascript/jquery-3.2.1.min.js"></script>
+<script src="<?= Config::CLIENT_ASSET_PATH; ?>javascript/bootstrap.min.js"></script>
+<script src="<?= Config::CLIENT_SRC_PATH; ?>formUtilities.js"></script>
+<script src="<?= Config::CLIENT_SRC_PATH; ?>loginDialog.js"></script>
+<script src="<?= Config::CLIENT_SRC_PATH; ?>mainPage.js"></script>
+
+<?php $this->controller->renderScript(); ?>
+
+</body>
+</html>
