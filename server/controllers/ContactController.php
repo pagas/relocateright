@@ -10,6 +10,7 @@ class ContactController extends Controller
 {
     protected $loadScript = array(
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyDmP2ModT_nKjuqloZFYqOBtewPGLN0SC4",
+        Config::CLIENT_ASSET_PATH . "javascript/gmaps.js",
         Config::CLIENT_SRC_PATH . "contactPage.js"
     );
     public function index()
