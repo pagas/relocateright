@@ -65,6 +65,10 @@ class Core
         );
     }
 
+    static function explodeComma($str) {
+        if (empty($str)) return array();
+        return explode(',',$str);
+    }
     /**
      * Custom validation callback to validate UK postcodes.
      *

@@ -77,9 +77,9 @@ class PropertyController extends Controller
             $result = $propertyManager->create($property);
         } else {
             $originalProperty = $propertyManager->getPropertyById($property['id']);
-            $imagesToRemove = array_diff(explode(',', $originalProperty['images']), explode(',', $property['images']));
+            $imagesToRemove = array_diff(Core::explodeComma($originalProperty['images']), Core::explodeComma($property['images']));
             $this->removeImages($imagesToRemove);
-            $updatedImages =array_merge(explode(',', $property['images']), $this->processImages());
+            $updatedImages = array_merge(Core::explodeComma($property['images']), $this->processImages());
             $property['images'] = join(',', $updatedImages);
             $result = $propertyManager->update($property);
         }
@@ -90,9 +90,10 @@ class PropertyController extends Controller
         ));
     }
 
-    public function removeImages($images) {
+    public function removeImages($images)
+    {
         foreach ($images as $image) {
-            $files = explode(',', $image);
+            $files = Core::explodeComma($image);
             unlink(Config::IMAGE_UPLOAD_DIR . $files);
         }
     }
@@ -142,7 +143,7 @@ class PropertyController extends Controller
             if (empty($property['images'])) {
                 $property['image'] = 'default.png';
             } else {
-                $property['image'] = explode(',', $property['images'])[0];
+                $property['image'] = Core::explodeComma($property['images'])[0];
             }
         }
 
