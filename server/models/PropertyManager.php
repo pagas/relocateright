@@ -197,7 +197,7 @@ class PropertyManager extends BaseModel
         }
 
         if (!empty($searchParams['area'])) {
-            $where .= ' AND area <= :area';
+            $where .= ' AND area = :area';
             $params['area'] = $searchParams['area'];
         }
 
