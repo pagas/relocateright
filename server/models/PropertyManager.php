@@ -122,7 +122,7 @@ class PropertyManager extends BaseModel
         }
 
         if (!empty($searchParams['priceRange'])) {
-            if ($params['rentalProperty'] === 'buy') {
+            if ($searchParams['rentalProperty'] === 'buy') {
                 switch ($searchParams['priceRange']) {
                     case "0-50":
                         $where .= 'AND price >= 0 AND price <= 50000';

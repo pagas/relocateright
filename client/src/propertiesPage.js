@@ -15,7 +15,12 @@ $(function() {
     searchForm.submit(function(event) {
         // stop browser default behaviour - refreshing the page
         event.preventDefault();
-        var searchData = REApp.formUtilities.objectifyForm(searchForm.serializeArray());
+        var searchData = REApp.formUtilities.objectifyForm($("form[name='searchForm']").serializeArray());
+        if (searchData.rentalProperty == 'rent') {
+            searchData.priceRange = searchForm.find('#rentPriceRange').val();
+        } else {
+            searchData.priceRange = searchForm.find('#buyPriceRange').val();
+        }
         $.get( "property/find",  searchData).done(function( data ) {
             updatePropertyList(data.properties);
 
