@@ -12,7 +12,6 @@ class PropertyController extends Controller
     protected $loadScript = array(
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyDmP2ModT_nKjuqloZFYqOBtewPGLN0SC4",
         Config::CLIENT_ASSET_PATH . "javascript/gmaps.js",
-        Config::CLIENT_ASSET_PATH . "javascript/jquery.uploadfile.min.js",
         Config::CLIENT_ASSET_PATH . "javascript/dropzone.js",
         Config::CLIENT_SRC_PATH . "propertiesPage.js",
         Config::CLIENT_SRC_PATH . "propertyPage.js"

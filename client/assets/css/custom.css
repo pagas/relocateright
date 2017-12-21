@@ -1,0 +1,29 @@
+/** property list **/
+.property-item {
+    float: left;
+    margin: 10px;
+}
+
+.property-item img {
+    width: 300px;
+    height: 220px;
+}
+
+.property-item .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 300px;
+}
+
+#property-list-menu {
+    text-align: right;
+    display: none;
+}
+
+/** Map style **/
+#map {
+    display: block;
+    width: 600px;
+    height: 500px;
+}
