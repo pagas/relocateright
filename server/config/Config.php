@@ -16,5 +16,6 @@ class Config
     const DATABASE_PASSWORD = '';
     const DEFAULT_CONTROLLER = 'home';
     const ADMIN_EMAIL = 'lppagas@gmail.com';
+    const IMAGE_UPLOAD_DIR = self::SERVER_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
 
 }

@@ -1,12 +1,30 @@
 <article>
     <div class="row">
+        <?php if(!empty($_GET['message'])) : ?>
+            <div id="sendmessage" class="fade-out"><?=$_GET['message']?></div>
+        <?php endif; ?>
+
         <div class="col-sm-6">
             <div class="post-image">
                 <div class="post-heading">
                     <h3><a><?= $property['title']; ?>t</a></h3>
                 </div>
-                <img src="client/assets/img/1.jpg" alt="" class="img-responsive">
+
+
+                <div class="sp-wrap">
+
+                    <?php
+                    $images = explode(',', $property['images']);
+                    foreach ($images as $image):
+                        ?>
+                        <a href="server/uploads/<?=$image?>"><img src="server/uploads/<?=$image?>" alt=""></a>
+                    <?php endforeach;?>
+
+                </div>
+
             </div>
+
+            <div style="clear:both"></div>
 
             <div>
                 <label>Property Type:</label>

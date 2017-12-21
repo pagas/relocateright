@@ -33,6 +33,10 @@ class PropertyController extends Controller
             $propertyId = $request['actionParams'][0];
             // Retrieves an property based on its URL
             $property = $propertyManager->getPropertyById($propertyId);
+            if (empty($property['images'])) {
+                $property['images'] = 'default.png';
+            }
+
             // If no article was found we redirect to ErrorController
             if (!$property) {
                 $this->redirect('error');
@@ -66,13 +70,17 @@ class PropertyController extends Controller
     {
         Authorization::checkAccess();
 
-        $files = $_FILES;
         $property = $_POST;
-
         $propertyManager = new PropertyManager();
         if (empty($property['id'])) {
+            $property['images'] = join(',', $this->processImages());
             $result = $propertyManager->create($property);
         } else {
+            $originalProperty = $propertyManager->getPropertyById($property['id']);
+            $imagesToRemove = array_diff(explode(',', $originalProperty['images']), explode(',', $property['images']));
+            $this->removeImages($imagesToRemove);
+            $updatedImages =array_merge(explode(',', $property['images']), $this->processImages());
+            $property['images'] = join(',', $updatedImages);
             $result = $propertyManager->update($property);
         }
 
@@ -81,6 +89,32 @@ class PropertyController extends Controller
             'errors' => $propertyManager->getErrors()
         ));
     }
+
+    public function removeImages($images) {
+        foreach ($images as $image) {
+            $files = explode(',', $image);
+            unlink(Config::IMAGE_UPLOAD_DIR . $files);
+        }
+    }
+
+    public function processImages()
+    {
+        $ds = DIRECTORY_SEPARATOR;
+        $storeFolder = 'uploads';
+        $uploadedFiles = array();
+
+        if (!empty($_FILES)) {
+            foreach ($_FILES['file']['tmp_name'] as $tempFile) {
+                $newFileName = uniqid();
+                $targetPath = Config::SERVER_PATH . $ds . $storeFolder . $ds;  //4
+                $targetFile = $targetPath . $newFileName;
+                $result = move_uploaded_file($tempFile, $targetFile);
+                $uploadedFiles[] = $newFileName;
+            }
+        }
+        return $uploadedFiles;
+    }
+
 
     function create()
     {
@@ -91,7 +125,8 @@ class PropertyController extends Controller
             'rentalProperty' => 0,
             'description' => '',
             'price' => '',
-            'postcode' => ''
+            'postcode' => '',
+            'images' => ''
         );
         $this->params['dropDowns'] = PropertyManager::getAllDropDownLabels();
         $this->view = 'edit-property';
@@ -104,6 +139,11 @@ class PropertyController extends Controller
         foreach ($properties as &$property) {
             $property['status'] = PropertyManager::getDropDownValueLabel('status', $property['status']);
             $property['area'] = PropertyManager::getDropDownValueLabel('areas', $property['area']);
+            if (empty($property['images'])) {
+                $property['image'] = 'default.png';
+            } else {
+                $property['image'] = explode(',', $property['images'])[0];
+            }
         }
 
         $this->respondJSON(array(
@@ -111,7 +151,8 @@ class PropertyController extends Controller
         ));
     }
 
-    function delete($request) {
+    function delete($request)
+    {
         $propertyManager = new PropertyManager();
         $propertyManager->delete($request['actionParams'][0]);
 

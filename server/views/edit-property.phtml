@@ -85,17 +85,18 @@
                         <div class="error"></div>
                     </div>
 
+                    <div class="form-group">
+                        <label>Images</label>
 
-<!--                    <div class="form-group">-->
-<!--                        <label>Images</label>-->
-<!---->
-<!--                        <div class="dropzone clsbox" id="mydropzone">-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="error"></div>-->
-<!--                    </div>-->
+                        <div class="dropzone clsbox" id="mydropzone" data-images="<?=$property['images'];?>">
+                        </div>
+
+                        <div class="error"></div>
+                    </div>
 
                     <input name="id" type="hidden" value="<?= isset($property['id']) ? $property['id'] : null; ?>">
+                    <input name="images" type="hidden" value="<?= isset($property['images']) ? $property['images'] : null; ?>">
+
 
                     <hr class="colorgraph">
                     <div class="row">

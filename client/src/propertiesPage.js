@@ -57,7 +57,7 @@ $(function() {
         propertyListItemTemplate.find("span[data-content='title']").html(property.title);
         propertyListItemTemplate.find("span[data-content='price']").html(property.price);
         propertyListItemTemplate.find("span[data-content='status']").html(property.status);
-        propertyListItemTemplate.find("img").attr('src',"client/assets/img/1.jpg");
+        propertyListItemTemplate.find("img").attr('src',"server/uploads/" + property.image);
         propertyListItemTemplate.find("a").attr('href',"/property/view/" + property.id);
         elem.append(propertyListItemTemplate.clone().children());
     }
