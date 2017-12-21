@@ -24,7 +24,8 @@ class PropertyManager extends BaseModel
         'propertyType' => 'Property type',
         'noOfBedrooms' => 'No. of bedrooms',
         'postcode' => 'Postcode',
-        'price' => 'Price'
+        'price' => 'Price',
+        'area' => 'Area'
     );
 
     protected $dopDownValueLabels = array(
