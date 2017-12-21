@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="sel1">Rent or Buy</label>
+                        <label>Rent or Buy</label>
                         <select name="rentalProperty" class="form-control" id="rentalProperty">
                             <option value="" selected>Please select</option>
                             <option value="buy" <?=!$property['rentalProperty'] ? 'selected' : ''?> > Buy </option>
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="sel1">Property Status</label>
+                        <label >Property Status</label>
                         <select name="status" class="form-control" id="status">
                             <?php  LayoutControl::showSelectControl($dropDowns['status'], $property['status']) ?>
                         </select>
