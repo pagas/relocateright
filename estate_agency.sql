@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2017 at 03:04 PM
+-- Generation Time: Dec 21, 2017 at 11:51 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -71,6 +71,7 @@ CREATE TABLE `properties` (
   `postcode` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `addressline1` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `addressline2` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `images` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `lat` float(10,6) NOT NULL,
   `lng` float(10,6) NOT NULL,
@@ -81,8 +82,9 @@ CREATE TABLE `properties` (
 -- Dumping data for table `properties`
 --
 
-INSERT INTO `properties` (`id`, `title`, `propertyType`, `status`, `area`, `description`, `rentalProperty`, `noOfBedrooms`, `price`, `postcode`, `addressline1`, `addressline2`, `created_at`, `lat`, `lng`, `updated_at`) VALUES
-(75, 'asdf', 'flats', 'underOffer', 'plaistow', 'asdf', 1, 3, 3333.00, 'N19LL', '', NULL, '2017-12-19 23:46:59', 51.532574, -0.109044, '2017-12-20 14:00:23');
+INSERT INTO `properties` (`id`, `title`, `propertyType`, `status`, `area`, `description`, `rentalProperty`, `noOfBedrooms`, `price`, `postcode`, `addressline1`, `addressline2`, `images`, `created_at`, `lat`, `lng`, `updated_at`) VALUES
+(77, 'asfa', 'houses', 'underOffer', 'greenwich', 'asdfddxx ee', 0, 1, 3232.00, 'N19LL', '', NULL, '5a3b01215658d,5a3b62f7c2715', '2017-12-21 00:41:55', 51.532574, -0.109044, '2017-12-21 08:29:59'),
+(79, 'default', 'flats', 'underOffer', 'kingscross', 'asdfasd', 0, 3, 333.00, 'N19LL', '', NULL, '5a3b70ba84b23', '2017-12-21 08:58:33', 51.532574, -0.109044, '2017-12-21 09:28:42');
 
 -- --------------------------------------------------------
 
@@ -143,7 +145,8 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `passwo
 (2, 'bbbb', 'fff', 'www', 'test@mail.com', 'fadfa', NULL, NULL),
 (4, 'ddd', 'aaa', 'asdfasdf', 'tea@asdf.com', '$2y$10$uokXuEc0ojArbyoft/vrWOLR6OlYVjQ6q88tad8vhK1Fsi8I.MG0W', '2017-12-05 23:23:36', NULL),
 (16, 'paulius', 'paulius', 'paulius2', 'test@test2.com', '$2y$10$eXeA8KPsKgrw3dJayhrmpON7ljp4RcJ3OfUXwO0VxWdSCXMWdKMDi', '2017-12-17 16:03:19', NULL),
-(17, 'test', 'test', 'test', 'test@test.com', '$2y$10$3BPGhNEp3I4za3XuB0wcduYVRolqx/87.IjvZhAf79NHzZukiNo/m', '2017-12-17 16:07:41', NULL);
+(17, 'test', 'test', 'test', 'test@test.com', '$2y$10$3BPGhNEp3I4za3XuB0wcduYVRolqx/87.IjvZhAf79NHzZukiNo/m', '2017-12-17 16:07:41', NULL),
+(18, 'asdf', 'sadf', 'asdf', 'asdf@asdf.com', '$2y$10$vcqmRMnEtnAZddmwZ4m7KuNpJ9GZmwD89h.HNfTgGJWWWU116EHia', '2017-12-20 16:19:27', NULL);
 
 --
 -- Indexes for dumped tables
@@ -188,7 +191,7 @@ ALTER TABLE `enquiries`
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT for table `sellingrequests`
 --
@@ -198,7 +201,7 @@ ALTER TABLE `sellingrequests`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;COMMIT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
