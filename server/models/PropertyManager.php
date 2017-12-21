@@ -14,7 +14,7 @@ class PropertyManager extends BaseModel
         array('title', 'maxLength', 100),
         array('price', 'price'),
         array('postcode', 'postcode'),
-        array('description, images', 'maxLength', 2000)
+        array('description, images', 'maxLength', 5000)
     );
 
     protected $fieldLabels = array(
