@@ -69,13 +69,8 @@ REApp.propertyPage = (function(REApp) {
         var propertyId = propertyForm.find("input[name='id'][type='hidden']").val();
         if (propertyId) {
             window.location.href='/property/view/' + propertyId + '?message=Property successfully updated.';
-        }
-
-        if (data.success === true) {
-            REApp.formUtilities.clearFormField(propertyForm);
-            REApp.formUtilities.showSuccessMessage();
         } else {
-            REApp.formUtilities.showFormFieldErrors(propertyForm, data.errors);
+            window.location.href='/property/create' + '?message=Property successfully created.';
         }
     }
 

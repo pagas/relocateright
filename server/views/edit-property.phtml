@@ -12,7 +12,9 @@
                     <?php endif; ?>
 
                     <hr class="colorgraph">
-                    <div id="sendmessage">Property has been successfully created. </div>
+                    <?php if(!empty($_GET['message'])) : ?>
+                        <div id="sendmessage" class="fade-out"><?=$_GET['message']?></div>
+                    <?php endif; ?>
                     <div id="errormessage"></div>
 
                     <div class="form-group">
