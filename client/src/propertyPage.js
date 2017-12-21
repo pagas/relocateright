@@ -17,6 +17,8 @@ REApp.propertyPage = (function(REApp) {
             uploadMultiple: true,
             parallelUploads: 6,
             maxFiles: 6,
+            maxFilesize: 10,
+            acceptedFiles: ".png,.jpg",
             addRemoveLinks: true,
             init: function () {
                 this.on('sending', function (file, xhr, formData) {
