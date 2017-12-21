@@ -36,11 +36,7 @@ REApp.formUtilities = (function() {
         });
         map.addMarker({
             lat: lat,
-            lng: lng,
-            title: 'Lima',
-            click: function(e) {
-                alert('You clicked in this marker');
-            }
+            lng: lng
         });
     }
 
